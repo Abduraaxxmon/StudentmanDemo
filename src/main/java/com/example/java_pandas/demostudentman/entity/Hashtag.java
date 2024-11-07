@@ -3,6 +3,7 @@ package com.example.java_pandas.demostudentman.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
@@ -11,15 +12,15 @@ import java.util.Set;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Hashtag {
+public class Hashtag implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToMany(mappedBy = "hashtags")
+    @ManyToMany(fetch = FetchType.LAZY,mappedBy = "hashtags")
     private Set<New> hashtagNews;
 
-    @ManyToMany(mappedBy = "hashtags")
+    @ManyToMany(fetch = FetchType.LAZY,mappedBy = "hashtags")
     private Set<User> hashtagUsers;
 
     @Column(nullable = false)

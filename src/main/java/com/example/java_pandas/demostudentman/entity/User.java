@@ -26,16 +26,16 @@ public class User {
     )
     private Set<Hashtag> hashtags;
 
-    @OneToMany(mappedBy = "author",cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "author",cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<New> news;
 
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "user",cascade = CascadeType.ALL,orphanRemoval = true)
     private Set<Comment> comments;
 
-    @OneToMany(mappedBy = "userLike",cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "userLike",cascade = CascadeType.ALL,orphanRemoval = true)
     private Set<UserInteractions> userInteractions;
 
-    @OneToMany(mappedBy = "seenUsers",cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "seenUsers",cascade = CascadeType.ALL,orphanRemoval = true)
     private Set<UserViewedNews> userViewedNews;
 
 

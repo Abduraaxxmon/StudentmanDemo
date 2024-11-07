@@ -3,6 +3,7 @@ package com.example.java_pandas.demostudentman.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -12,7 +13,7 @@ import java.util.Date;
 @Setter
 @Table(name="contact_info")
 @Entity
-public class ContactInfo {
+public class ContactInfo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

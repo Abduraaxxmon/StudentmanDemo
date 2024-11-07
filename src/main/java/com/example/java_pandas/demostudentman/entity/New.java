@@ -4,6 +4,7 @@ import com.example.java_pandas.demostudentman.status.Event;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -13,12 +14,12 @@ import java.util.Set;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class New {
+public class New implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinTable(
             name="hashtag_news",
             joinColumns = @JoinColumn(name = "news_id"),
@@ -26,19 +27,19 @@ public class New {
     )
     private Set<Hashtag> hashtags;
 
-    @OneToMany(mappedBy = "news",cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "news",cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Comment> comments;
 
-    @OneToMany(mappedBy = "newsAttachment",cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "newsAttachment",cascade = CascadeType.ALL,orphanRemoval = true)
     private Set<Attachment> attachments;
 
-    @OneToMany(mappedBy = "interactedNews",cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "interactedNews",cascade = CascadeType.ALL,orphanRemoval = true)
     private Set<UserInteractions> userInteractions;
 
-    @OneToMany(mappedBy = "seenNews",cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "seenNews",cascade = CascadeType.ALL,orphanRemoval = true)
     private Set<UserViewedNews> userViewedNews;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="author_id", nullable=false)
     private User author;
 
@@ -57,7 +58,7 @@ public class New {
     @Column(nullable = false)
     private Date uploaded_at;
 
-    @Column(nullable = false)
+
     private Date edited_at;
 
     @Enumerated(EnumType.STRING)

@@ -1,9 +1,14 @@
 package com.example.java_pandas.demostudentman.dto;
 
-import java.io.Serializable;
+import lombok.*;
 
-public class AttachmentWithNewsResponseDto implements Serializable {
-    private Long id;
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class AttachmentDto {
+
     private String fileName;
     private String contentType;
     private String filePath;

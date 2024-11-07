@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: demoStudentman
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: Abdu2004
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+logging:
+  level:
+    root: ERROR
+    org.springframework: DEBUG
+    com.example: DEBUG # Adjust this to your package for detailed logs
+  file:
+    name: logs/demoStudentman.log # Optional, if you want to log to a file
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n" # Customize the console log format
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n" # Customize the file log format
