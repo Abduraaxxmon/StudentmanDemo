@@ -38,11 +38,6 @@ public class User {
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "seenUsers",cascade = CascadeType.ALL,orphanRemoval = true)
     private Set<UserViewedNews> userViewedNews;
 
-
-
-    @Column(nullable = false)
-    private String username;
-
     @Column(nullable = false)
     private String password;
 

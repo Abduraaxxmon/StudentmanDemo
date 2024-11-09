@@ -2,10 +2,8 @@ package com.example.java_pandas.demostudentman.controller;
 
 import com.example.java_pandas.demostudentman.dto.LoginRequest;
 import com.example.java_pandas.demostudentman.dto.RegisterRequest;
-import com.example.java_pandas.demostudentman.entity.User;
-import com.example.java_pandas.demostudentman.service.UserService;
+import com.example.java_pandas.demostudentman.service.UserAuthService;
 import lombok.RequiredArgsConstructor;
-import org.mapstruct.Mapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,8 +15,8 @@ import java.util.UUID;
 @RestController
 @RequestMapping("auth")
 @RequiredArgsConstructor
-public class AuthController {
-    private final UserService userService;
+public class UserAuthController {
+    private final UserAuthService userService;
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginRequest user) {

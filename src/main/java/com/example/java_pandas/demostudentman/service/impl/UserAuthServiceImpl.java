@@ -2,13 +2,10 @@ package com.example.java_pandas.demostudentman.service.impl;
 
 import com.example.java_pandas.demostudentman.dto.LoginRequest;
 import com.example.java_pandas.demostudentman.dto.RegisterRequest;
-import com.example.java_pandas.demostudentman.dto.UserPrincipal;
 import com.example.java_pandas.demostudentman.entity.User;
-import com.example.java_pandas.demostudentman.mapper.UserMapper;
 import com.example.java_pandas.demostudentman.repository.UserRepository;
-import com.example.java_pandas.demostudentman.service.UserService;
+import com.example.java_pandas.demostudentman.service.UserAuthService;
 import com.example.java_pandas.demostudentman.service.securService.JwtService;
-import com.example.java_pandas.demostudentman.service.securService.MyUserDetailService;
 import com.example.java_pandas.demostudentman.status.Role;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,13 +18,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.net.http.HttpResponse;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class UserServiceImpl implements UserService {
+public class UserAuthServiceImpl implements UserAuthService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;

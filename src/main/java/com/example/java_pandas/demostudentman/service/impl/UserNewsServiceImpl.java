@@ -23,13 +23,15 @@
         private final UserViewedNewsRepository viewedNewsRepository;
         private final AttachmentRepository attachmentRepository;
         private final ContactInfoMapper contactInfoMapper;
+        private final UserRepository userRepository;
+
         @Override
-        public Set<UserNewsDto> getUserNews(Long id){
+        public Set<UserNewsDto> getUserNews(String email){
 
             Set<UserNewsDto> recommendedNews = new HashSet<>();
-
-            List<Object[]> news = newsRepository.findTopRecommendations(id);
-            List<Long> longList = userInteractionsRepository.getUserInteractionsById(id);
+            User user = userRepository.findByEmail(email).get();
+            List<Object[]> news = newsRepository.findTopRecommendations(user.getId());
+            List<Long> longList = userInteractionsRepository.getUserInteractionsById(user.getId());
 
 //            List<UserInteractions> listLikedNewsIds = userInteractionsRepository.getUserInteractionsIdByUserId(id);
 
