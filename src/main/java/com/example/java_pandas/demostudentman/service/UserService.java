@@ -1,12 +1,7 @@
-package com.example.java_pandas.demostudentman.service;
+package com.example.java_pandas.demostudentman.service.impl;
 
-import com.example.java_pandas.demostudentman.dto.UserRegisterDto;
 import org.springframework.http.ResponseEntity;
 
 public interface UserService {
-    public ResponseEntity<UserRegisterDto> register(UserRegisterDto user);
-    public ResponseEntity<UserRegisterDto> login(UserRegisterDto user);
-    public ResponseEntity<UserRegisterDto> updateUserInfo(UserRegisterDto user);
-
-
+    ResponseEntity<String> login(String username, String passwo);
 }
